@@ -1,10 +1,12 @@
-require('dotenv').config();
+require("dotenv").config();
 
-const express = require ('express');
+const { ApolloServer } = require("apollo-server");
 
-const PORT = process.env.PORT || 3002
+const { typeDefs } = require("./schema/type-defs");
+const { resolvers } = require("./schema/resolvers");
 
-const app = express();
+const server = new ApolloServer({ typeDefs, resolvers });
 
-app.listen(PORT , console.log(`Server running on port ${PORT}`));
-
+server.listen().then(({ url }) => {
+  console.log(`Your API is running at: ${url}`);
+})
