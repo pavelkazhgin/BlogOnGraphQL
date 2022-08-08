@@ -1,11 +1,20 @@
 
+const pagination = require('../../../utils/paginationUtils')
 
 const resolversPost = {
   Query: {
     async posts(parent, args, { models }) {
-      const allPosts = await models.Post.findAll();
-      return allPosts;
+      const { page, per_page } = args.posts;
+      const { Post } = models;
+      if(!page && per_page && Post){
+        return console.error();
+      }
+     const paginatedResults = await pagination(page, per_page, Post );
+    //  console.log('paginatedResults', paginatedResults)
+    // {[post:{}],post:[], {}}
+      return console.log({paginatedResults});
     },
+
     async post(parent, { id }, { models }) {
       const currentPost = await models.Post.findAll({
         where: { id: Number(id) },
@@ -21,6 +30,7 @@ const resolversPost = {
       console.log("Hahahha", jsonPost);
       return jsonPost;
     },
+
   },
 
   Mutation: {
@@ -36,8 +46,6 @@ const resolversPost = {
             title,
             user_id,
             body,
-            createdAt: !createdAt || `${new Date().toLocaleString()}`,
-            updatedAt: `${new Date().toLocaleString()}`,
           });
           console.log("------>> post create", newPost);
           let jsonnewPost = JSON.parse(JSON.stringify(newPost));

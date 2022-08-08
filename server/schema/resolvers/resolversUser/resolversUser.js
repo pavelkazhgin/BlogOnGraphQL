@@ -1,4 +1,4 @@
-const { getToken } = require("../../../token/token");
+const { getToken } = require("../../../utils/tokenUtils");
 
 const resolversUser = {
   
@@ -6,6 +6,7 @@ const resolversUser = {
     async user(parent, args, { models }) {
       console.log('HAHAHA', models)
       const allUsers = await models.User.findAll();
+      console.log(allUsers)
       return allUsers;
     },
   },

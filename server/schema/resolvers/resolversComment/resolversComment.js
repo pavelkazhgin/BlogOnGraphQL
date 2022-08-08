@@ -1,4 +1,4 @@
-const { getToken } = require("../../../token/token");
+const { getToken } = require("../../../utils/tokenUtils");
 
 const resolversComment = {
   Query: {
