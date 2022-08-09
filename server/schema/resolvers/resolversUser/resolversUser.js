@@ -4,10 +4,10 @@ const resolversUser = {
   
   Query: {
     async user(parent, args, { models }) {
-      console.log('HAHAHA', models)
+      // console.log('HAHAHA', models)
       const allUsers = await models.User.findAll();
-      console.log(allUsers)
-      return allUsers;
+      console.log(JSON.parse(JSON.stringify(allUsers)));
+      return JSON.parse(JSON.stringify(allUsers));
     },
   },
 
@@ -32,8 +32,9 @@ const resolversUser = {
         );
         const idUser = JSON.parse(JSON.stringify(currentUser)).id;
         const nicknameUser = JSON.parse(JSON.stringify(currentUser)).nickname;
+        const email = JSON.parse(JSON.stringify(currentUser)).email;
         console.log("User_ID", idUser);
-        const token = getToken({ idUser, nicknameUser });
+        const token = getToken({ idUser, nicknameUser, email });
         console.log("This is token", token);
         return token;
 

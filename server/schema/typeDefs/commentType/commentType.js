@@ -7,9 +7,17 @@ type Comment {
     user_id: Int!
     post_id: Int!
     createdAt: String!
+    author: String!
   },
 
+  input newComment{
+    body: String!
+    post_id:Int!
+  }
 
+type Mutation{
+  newComment(newComment: newComment!): Comment!
+}
   
 `
 

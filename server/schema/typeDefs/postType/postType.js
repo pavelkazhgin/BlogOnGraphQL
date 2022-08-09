@@ -10,19 +10,15 @@ const postType = gql`
     createdAt: String!
     User: String!
     authors_nickname: String!
+    author: String!
   }
  
   type Posts {
-    Posts: [Post!]!
-  }
-
-  type Info{
     countPosts: Int!
     countPages: Int!
     lastPage: Boolean!
+    posts: [Post!]!
   }
-  
-  union Pagination = Posts | Info
 
   input getPosts {
     page: Int!
@@ -30,8 +26,8 @@ const postType = gql`
   }
 
   type Query {
-    posts(posts: getPosts!): Pagination
-    post(id: ID!) : [Post!]
+    posts(posts: getPosts!): Posts!
+    post(id: ID!) : Post!
       
   }
 
@@ -42,7 +38,7 @@ const postType = gql`
   }
 
   type Mutation {
-    createPost(input: CreatePostInput!): Post 
+    createPost(input: CreatePostInput!): Post!
   }
 `;
 

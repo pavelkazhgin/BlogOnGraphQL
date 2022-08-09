@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     body: DataTypes.STRING,
     user_id: DataTypes.INTEGER,
     post_id: DataTypes.INTEGER,
+    author: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'Comment',
