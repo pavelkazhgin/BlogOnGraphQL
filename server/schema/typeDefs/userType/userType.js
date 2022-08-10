@@ -12,7 +12,7 @@ const userType = gql`
   }
 
   type Query {
-   user: [User!]!
+   users: [User!]!
   }
 
   input signIn {
@@ -21,7 +21,7 @@ const userType = gql`
 }
 
 type Mutation {
-  signIn(input: signIn!): String
+  signIn(input: signIn!): String!
 }
 
 

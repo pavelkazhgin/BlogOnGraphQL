@@ -16,7 +16,7 @@ type Comment {
   }
 
 type Mutation{
-  newComment(newComment: newComment!): Comment!
+  newComment(input: newComment!): Comment!
 }
   
 `

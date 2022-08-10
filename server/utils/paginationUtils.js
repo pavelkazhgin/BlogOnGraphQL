@@ -1,6 +1,5 @@
 async function pagination(page, per_page, models) {
   const { Post, User }  = models 
-  console.log('Зашел в пагинацию')
   if (!page && per_page && Post && User) {
     console.error;
   }
@@ -41,13 +40,10 @@ async function pagination(page, per_page, models) {
       return e
     });
    
-    // posts[0].User = `${posts[0].User.nickname}`;
-    // posts[0] = { ...posts[0], authors_nickname: `${posts[0].User}` };
-    // console.log('Все посты', posts);
-
+    const posts2 = {posts, countPosts, countPages, lastPage}
+    console.log('Все посты',posts2);
+    
     return {posts, countPosts, countPages, lastPage}
-
-    // {{[Posts]}, {countPosts, countPages, lastPage}}
   } catch (error) {
     console.log(error);
   }

@@ -9,11 +9,9 @@ const getToken = payload => {
 }
 
 const decodedToken = (req) => {
-  // console.log('Zahel in decoded with -->', header)
   const header =  req.headers.authorization;
   if ( header ){
     const decoded = jwt.verify(`${header}`, "secret");
-    // console.log('This is token in decoded', decoded)
     return decoded;
   }
 
