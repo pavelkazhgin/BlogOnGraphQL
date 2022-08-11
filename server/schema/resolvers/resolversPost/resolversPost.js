@@ -34,7 +34,7 @@ const resolversPost = {
       const { models, payload } = context;
       const { idUser, nicknameUser } = payload;
       const { title, body, createdAt } =  (JSON.parse(JSON.stringify(args))).input;
-      const author = `${process.env.API_URL}/user/${idUser}`
+      const author = `${process.env.API_URL}user/${idUser}`
       const user_id = idUser;
       if (title && body && createdAt && user_id && models) {
         try {
