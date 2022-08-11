@@ -8,6 +8,7 @@ const { decodedToken } = require('./utils/tokenUtils');
 const  models  = require('./db/models')
 // console.log('Это то что мозги ', typeDefs[0].definitions[0].fields[0])
 // console.log('Это то что мозги ', resolvers[0])
+const PORT = process.env.PORT || 4000;
 
 const contextPayload = ({ req }) => { 
   models;
@@ -31,7 +32,7 @@ const server = new ApolloServer({
   context: contextPayload,
 }); 
 
-server.listen().then(({ url }) => {
+server.listen({port: PORT}).then(({ url }) => {
   console.log(`Your API is running at: ${url}`);
 })
 
