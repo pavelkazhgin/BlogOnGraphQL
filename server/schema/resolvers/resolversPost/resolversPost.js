@@ -23,6 +23,7 @@ const resolversPost = {
         ],
       });
       let jsonPost = JSON.parse(JSON.stringify(currentPost));
+      console.log(jsonPost)
       jsonPost[0].User = `${jsonPost[0].User.nickname}`;
       jsonPost[0] = { ...jsonPost[0], authors_nickname: `${jsonPost[0].User}` };
       return jsonPost[0];

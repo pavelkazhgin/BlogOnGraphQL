@@ -15,6 +15,10 @@ type Comment {
     post_id:Int!
   }
 
+type Query{
+  comments(input: Int!): [Comment!]!
+}
+
 type Mutation{
   newComment(input: newComment!): Comment!
 }

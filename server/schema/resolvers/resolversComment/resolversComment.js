@@ -2,6 +2,21 @@ const { getToken } = require("../../../utils/tokenUtils");
 require("dotenv").config();
 
 const resolversComment = {
+  Query: {
+    async comments(parent, args, { models }) {
+      const  post_id  = args.input;
+      const { Comment } = models;
+      if (!post_id && Comment) {
+        return console.error();
+      }
+      const comments = await Comment.findAll({
+        where: {post_id: post_id}
+      })
+      // console.log('This is comments', comments)
+      return comments;
+    },
+  },
+
   Mutation: {
     newComment: async (parent, args, { models, payload }) => {
       const { idUser } = payload;

@@ -5,6 +5,7 @@ const { gql } = require("apollo-server");
 const postType = gql`
 
   type Post {
+    id: ID!
     title: String!
     body: String!
     createdAt: String!
