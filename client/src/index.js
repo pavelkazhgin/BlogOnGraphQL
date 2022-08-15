@@ -4,12 +4,13 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
 
+const REACT_APP_SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-    <App />
+    <App el={REACT_APP_SERVER_URL}/>
     </BrowserRouter>
   </React.StrictMode>
 );

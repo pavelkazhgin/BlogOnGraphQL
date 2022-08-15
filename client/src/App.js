@@ -13,14 +13,18 @@ import SignIn from './components/SIgnIn/SignIn';
 import NewPost from './components/NewPost/NewPost';
 import PostPage from './components/PostPage/PostPage';
 
-function App() {
 
+
+function App(uri) {
+  
   let token = localStorage.getItem('token');
+  const {el} = uri;
+ console.log('REACT_APP_SERVER_URL', el)
   let client
   if (token) {
     client = new ApolloClient({
       cache: new InMemoryCache(),
-      uri: 'http://localhost:4000/graphql',
+      uri: el,
       headers: {
         authorization: localStorage.getItem('token'),
       }
@@ -29,7 +33,7 @@ function App() {
   if(!token){
     client = new ApolloClient({
       cache: new InMemoryCache(),
-      uri: 'http://localhost:4000/graphql',
+      uri: el,
     })
   }
   
