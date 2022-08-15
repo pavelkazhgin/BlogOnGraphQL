@@ -9,4 +9,4 @@ Server  was deployed https://graphql-blog-tt.herokuapp.com/
 На клиенте после каждых действий необходимо обновлять страницы для обновления контента.
 
 
-Данные для входа: pablo@gmail.exmpl, password: 123
+Данные для входа - email: pablo@gmail.exmpl, password: 123.
